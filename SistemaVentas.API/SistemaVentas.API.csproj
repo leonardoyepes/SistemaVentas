@@ -11,7 +11,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\SistemaVentas.Controlador\SistemaVentas.Controlador.csproj" />
+    <ProjectReference Include="..\SistemaVentas.Controlador\SistemaVentas.IOC.csproj" />
     <ProjectReference Include="..\SistemaVentas.DTO\SistemaVentas.DTO.csproj" />
     <ProjectReference Include="..\SistemaVentas.Negocio\SistemaVentas.Negocio.csproj" />
   </ItemGroup>

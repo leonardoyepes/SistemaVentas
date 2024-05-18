@@ -3,19 +3,19 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.9.34728.123
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SistemaVentas.API", "SistemaVentas.API\SistemaVentas.API.csproj", "{C1BE4703-927A-40B0-A1FC-99A34EB7D546}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SistemaVentas.API", "SistemaVentas.API\SistemaVentas.API.csproj", "{C1BE4703-927A-40B0-A1FC-99A34EB7D546}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SistemaVentas.Datos", "SistemaVentas.Datos\SistemaVentas.Datos.csproj", "{9D0A849C-9EED-419E-A17C-464AD0EC17A8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SistemaVentas.Datos", "SistemaVentas.Datos\SistemaVentas.Datos.csproj", "{9D0A849C-9EED-419E-A17C-464AD0EC17A8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SistemaVentas.Negocio", "SistemaVentas.Negocio\SistemaVentas.Negocio.csproj", "{7E4F2BE4-15E1-49BD-9D6D-8878AC113481}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SistemaVentas.Negocio", "SistemaVentas.Negocio\SistemaVentas.Negocio.csproj", "{7E4F2BE4-15E1-49BD-9D6D-8878AC113481}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SistemaVentas.Modelo", "SistemaVentas.Modelo\SistemaVentas.Modelo.csproj", "{ECD0BE49-AB81-4463-BEBD-16736F54986D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SistemaVentas.Modelo", "SistemaVentas.Modelo\SistemaVentas.Modelo.csproj", "{ECD0BE49-AB81-4463-BEBD-16736F54986D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SistemaVentas.DTO", "SistemaVentas.DTO\SistemaVentas.DTO.csproj", "{53D375AD-31C1-4B1B-9386-6FC59A15A52A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SistemaVentas.DTO", "SistemaVentas.DTO\SistemaVentas.DTO.csproj", "{53D375AD-31C1-4B1B-9386-6FC59A15A52A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SistemaVentas.Utilidades", "SistemaVentas.Utilidades\SistemaVentas.Utilidades.csproj", "{8F86673F-F65F-4D88-8656-33BA73ECF20E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SistemaVentas.Utilidades", "SistemaVentas.Utilidades\SistemaVentas.Utilidades.csproj", "{8F86673F-F65F-4D88-8656-33BA73ECF20E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SistemaVentas.Controlador", "SistemaVentas.Controlador\SistemaVentas.Controlador.csproj", "{E56A6989-2277-4B5F-880D-A1CA7DA77823}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SistemaVentas.IOC", "SistemaVentas.Controlador\SistemaVentas.IOC.csproj", "{E56A6989-2277-4B5F-880D-A1CA7DA77823}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

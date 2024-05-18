@@ -5,7 +5,7 @@ using SistemaVentas.Datos;
 using SistemaVentas.Datos.Repository;
 using SistemaVentas.Datos.Respository.Contratos;
 
-namespace SistemaVentas.Controlador
+namespace SistemaVentas.IOC
 {
     public static class Dependencia
     {

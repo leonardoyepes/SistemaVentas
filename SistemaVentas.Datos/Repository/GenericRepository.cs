@@ -15,38 +15,36 @@ namespace SistemaVentas.Datos.Repository
 
         public async Task<TModel> Obtener(Expression<Func<TModel, bool>> filtro)
         {
-            try
-            {
-
-                TModel model = await _dbventaContext.Set<TModel>().FirstOrDefaultAsync(filtro);
-                return model;
-            }
-            catch
-            {
-                throw new Exception("fallo la consulta de datos");
-            }
+            TModel model = await _dbventaContext.Set<TModel>().FirstOrDefaultAsync(filtro);
+            return model;
         }
 
         public async Task<TModel> Crear(TModel model)
         {
-           _dbventaContext.Set<TModel>().Add(model);
+            _dbventaContext.Set<TModel>().Add(model);
             await _dbventaContext.SaveChangesAsync();
             return model;
         }
 
-        public Task<TModel> Editar(TModel model)
+        public async Task<bool> Editar(TModel model)
         {
-            throw new NotImplementedException();
+            _dbventaContext.Set<TModel>().Add(model);
+            await _dbventaContext.SaveChangesAsync();
+            return true;
         }
 
-        public Task<TModel> Eliminar(TModel model)
+        public async Task<bool> Eliminar(TModel model)
         {
-            throw new NotImplementedException();
+            _dbventaContext.Set<TModel>().Remove(model);
+            await _dbventaContext.SaveChangesAsync();
+            return true;
         }
 
-        public Task<TModel> Consultar(Expression<Func<TModel, bool>> filtro)
+        public async Task<IQueryable<TModel>> Consultar(Expression<Func<TModel, bool>> filtro)
         {
-            throw new NotImplementedException();
+            IQueryable<TModel> queryModel = filtro == null ? _dbventaContext.Set<TModel>() :
+                _dbventaContext.Set<TModel>().Where(filtro);
+            return queryModel;
         }
     }
 }

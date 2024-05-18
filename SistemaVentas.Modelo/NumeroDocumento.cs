@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace SistemaVentas.Modelo;
+﻿namespace SistemaVentas.Modelo;
 
 public partial class NumeroDocumento
 {

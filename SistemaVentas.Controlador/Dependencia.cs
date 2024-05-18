@@ -2,6 +2,8 @@
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using SistemaVentas.Datos;
+using SistemaVentas.Datos.Repository;
+using SistemaVentas.Datos.Respository.Contratos;
 
 namespace SistemaVentas.Controlador
 {
@@ -13,6 +15,8 @@ namespace SistemaVentas.Controlador
                 {
                     options.UseSqlServer(configuration.GetConnectionString("StringSql"));
                 });
+            service.AddTransient(typeof(IGenericRepository<>), typeof(GenericRepository<>));
+            service.AddScoped<IVentaRepository, VentaRepository>();
         }
     }
 }

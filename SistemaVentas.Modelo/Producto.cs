@@ -13,7 +13,7 @@ public partial class Producto
 
     public int Stock { get; set; }
 
-    public decimal Precio { get; set; }
+    public decimal? Precio { get; set; }
 
     public bool EsActivo { get; set; }
 

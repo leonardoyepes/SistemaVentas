@@ -40,15 +40,15 @@ namespace SistemaVentas.Negocio.Servicios
         {
             try
             {
-                var Usuario = await _genericRepository.Obtener(m => m.IdUsuario == modelo.IdUsuario);
-                _ = Usuario ?? throw new Exception("No se encontro el usuario a editar");
+                var usuario = await _genericRepository.Obtener(m => m.IdUsuario == modelo.IdUsuario);
+                _ = usuario ?? throw new Exception("No se encontro el usuario a editar");
 
-                Usuario.NombreCompleto = modelo.NombreCompleto;
-                Usuario.Correo = modelo.Correo;
-                Usuario.Clave = modelo.Clave;
-                Usuario.IdRol = modelo.IdRol;
+                usuario.NombreCompleto = modelo.NombreCompleto;
+                usuario.Correo = modelo.Correo;
+                usuario.Clave = modelo.Clave;
+                usuario.IdRol = modelo.IdRol;
 
-                bool respuesta = await _genericRepository.Editar(Usuario);
+                bool respuesta = await _genericRepository.Editar(usuario);
                 return respuesta;
             }
             catch (Exception ex)
@@ -61,10 +61,10 @@ namespace SistemaVentas.Negocio.Servicios
         {
             try
             {
-                var Usuario = await _genericRepository.Obtener(m => m.IdUsuario == Id);
-                _ = Usuario ?? throw new Exception("No se encontro el usuario a eliminar");
+                var usuario = await _genericRepository.Obtener(m => m.IdUsuario == Id);
+                _ = usuario ?? throw new Exception("No se encontro el usuario a eliminar");
 
-                bool respuesta = await _genericRepository.Eliminar(Usuario);
+                bool respuesta = await _genericRepository.Eliminar(usuario);
                 return respuesta;
             }
             catch (Exception ex)

@@ -1,4 +1,4 @@
-﻿using SistemaVentas.Datos.Respository.Contratos;
+﻿using SistemaVentas.Datos.Repository.Contratos;
 using SistemaVentas.Modelo;
 
 namespace SistemaVentas.Datos.Repository

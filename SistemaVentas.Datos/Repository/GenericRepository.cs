@@ -1,5 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using SistemaVentas.Datos.Respository.Contratos;
+using SistemaVentas.Datos.Repository.Contratos;
 using System.Linq.Expressions;
 
 namespace SistemaVentas.Datos.Repository

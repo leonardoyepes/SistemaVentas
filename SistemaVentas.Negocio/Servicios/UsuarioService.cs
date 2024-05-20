@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using Microsoft.EntityFrameworkCore;
-using SistemaVentas.Datos.Respository.Contratos;
+using SistemaVentas.Datos.Repository.Contratos;
 using SistemaVentas.DTO;
 using SistemaVentas.Modelo;
 using SistemaVentas.Negocio.Servicios.Contratos;

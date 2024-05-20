@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using SistemaVentas.Datos.Respository.Contratos;
+using SistemaVentas.Datos.Repository.Contratos;
 using SistemaVentas.DTO;
 using SistemaVentas.Negocio.Servicios.Contratos;
 

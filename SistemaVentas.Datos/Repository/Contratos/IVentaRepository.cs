@@ -1,6 +1,6 @@
 ﻿using SistemaVentas.Modelo;
 
-namespace SistemaVentas.Datos.Respository.Contratos
+namespace SistemaVentas.Datos.Repository.Contratos
 {
     public interface IVentaRepository : IGenericRepository<Venta>
     {

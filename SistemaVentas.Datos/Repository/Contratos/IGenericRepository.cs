@@ -1,7 +1,6 @@
-﻿using System.Linq;
-using System.Linq.Expressions;
+﻿using System.Linq.Expressions;
 
-namespace SistemaVentas.Datos.Respository.Contratos
+namespace SistemaVentas.Datos.Repository.Contratos
 {
     public interface IGenericRepository<TModel> where TModel : class
     {

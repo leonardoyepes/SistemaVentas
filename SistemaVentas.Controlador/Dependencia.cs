@@ -22,10 +22,12 @@ namespace SistemaVentas.IOC
             service.AddTransient(typeof(IGenericRepository<>), typeof(GenericRepository<>));
             service.AddScoped<IVentaRepository, VentaRepository>();
             service.AddScoped<IRolRepository, RolRepository>();
+            service.AddScoped<IUsuarioRepository, UsuarioRepository>();
             service.AddAutoMapper(typeof(AutoMapperProfile));
 
             service.AddScoped<IVentaService, VentaService>();
             service.AddScoped<IRolService, RolService>();
+            service.AddScoped<IUsuarioService, UsuarioService>();
 
         }
     }

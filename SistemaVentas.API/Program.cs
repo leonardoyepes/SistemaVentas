@@ -8,6 +8,15 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.InyectarDependencias(builder.Configuration);
+builder.Services.AddCors(opt =>
+{
+    opt.AddPolicy("Politicas", app =>
+    {
+        app.AllowAnyMethod()
+        .AllowAnyMethod()
+        .AllowAnyOrigin();
+    });
+});
 
 var app = builder.Build();
 
@@ -17,7 +26,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
-
+app.UseCors("Politicas");
 app.UseAuthorization();
 
 app.MapControllers();

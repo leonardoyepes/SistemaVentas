@@ -1,10 +1,7 @@
-﻿using AutoMapper;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Mvc;
 using SistemaVentas.API.Utilidad;
-using SistemaVentas.Datos.Repository.Contratos;
 using SistemaVentas.DTO;
-using SistemaVentas.Modelo;
+using SistemaVentas.Negocio.Servicios.Contratos;
 
 namespace SistemaVentas.API.Controllers
 {
@@ -12,12 +9,10 @@ namespace SistemaVentas.API.Controllers
     [ApiController]
     public class UsuarioController : ControllerBase
     {
-        private readonly IMapper _mapper;
-        private readonly IUsuarioRepository _usuarioRepositorio;
-        public UsuarioController(IUsuarioRepository usuarioRepositorio, IMapper mapper)
+        private readonly IUsuarioService _usuarioService;
+        public UsuarioController(IUsuarioService usuarioService)
         {
-            _mapper = mapper;
-            _usuarioRepositorio = usuarioRepositorio;
+            _usuarioService = usuarioService;
         }
 
         [HttpGet]
@@ -28,14 +23,10 @@ namespace SistemaVentas.API.Controllers
 
             try
             {
-                List<UsuarioDTO> ListaUsuarios = new();
-                IQueryable<Usuario> query = await _usuarioRepositorio.Consultar();
-                query = query.Include(r => r.IdRolNavigation);
-
-                ListaUsuarios = _mapper.Map<List<UsuarioDTO>>(query.ToList());
-
-                if (ListaUsuarios.Count > 0)
-                    _response = new Response<List<UsuarioDTO>>() { State = true, Mesagge = "ok", Vaule = ListaUsuarios };
+                List<UsuarioDTO> listaUsuarios = new();
+                listaUsuarios = await _usuarioService.Listar();
+                if (listaUsuarios.Count > 0)
+                    _response = new Response<List<UsuarioDTO>>() { State = true, Mesagge = "ok", Vaule = listaUsuarios };
                 else
                     _response = new Response<List<UsuarioDTO>>() { State = false, Mesagge = string.Empty, Vaule = null };
 
@@ -50,17 +41,17 @@ namespace SistemaVentas.API.Controllers
 
         [HttpPost]
         [Route("Guardar")]
-        public async Task<IActionResult> Guardar([FromBody] UsuarioDTO request)
+        public async Task<IActionResult> Guardar([FromBody] UsuarioDTO modelo)
         {
             Response<UsuarioDTO> _response = new();
             try
             {
-                Usuario _usuario = _mapper.Map<Usuario>(request);
 
-                Usuario _usuarioCreado = await _usuarioRepositorio.Crear(_usuario);
 
-                if (_usuarioCreado.IdUsuario != 0)
-                    _response = new Response<UsuarioDTO>() { State = true, Mesagge = "ok", Vaule = _mapper.Map<UsuarioDTO>(_usuarioCreado) };
+                UsuarioDTO usuarioCreado = await _usuarioService.Crear(modelo);
+
+                if (usuarioCreado.IdUsuario != 0)
+                    _response = new Response<UsuarioDTO>() { State = true, Mesagge = "ok", Vaule = usuarioCreado };
                 else
                     _response = new Response<UsuarioDTO>() { State = false, Mesagge = "No se pudo crear el usuario" };
 
@@ -72,5 +63,73 @@ namespace SistemaVentas.API.Controllers
                 return StatusCode(StatusCodes.Status500InternalServerError, _response);
             }
         }
+        [HttpGet]
+        [Route("IniciarSesion")]
+        public async Task<IActionResult> IniciarSesion([FromBody] LoginDTO login)
+        {
+            Response<SesionDTO> _response = new();
+            try
+            {
+                SesionDTO sesionUsuario = await _usuarioService.ValidarCredenciales(login.Email, login.Password);
+
+                if (sesionUsuario != null)
+                    _response = new Response<SesionDTO>() { State = true, Mesagge = "ok", Vaule = sesionUsuario };
+                else
+                    _response = new Response<SesionDTO>() { State = false, Mesagge = "no encontrado", Vaule = null };
+
+                return StatusCode(StatusCodes.Status200OK, _response);
+            }
+            catch (Exception ex)
+            {
+                _response = new Response<SesionDTO>() { State = false, Mesagge = ex.Message, Vaule = null };
+                return StatusCode(StatusCodes.Status500InternalServerError, _response);
+            }
+        }
+
+        [HttpPut]
+        [Route("Editar")]
+        public async Task<IActionResult> Editar([FromBody] UsuarioDTO modelo)
+        {
+            Response<bool> _response = new();
+            try
+            {
+                bool respuesta = await _usuarioService.Editar(modelo);
+                if (respuesta)
+                    _response = new Response<bool>() { State = true, Mesagge = "ok", Vaule = true };
+                else
+                    _response = new Response<bool>() { State = false, Mesagge = "No se pudo editar el usuario", Vaule = false };
+
+                return StatusCode(StatusCodes.Status200OK, _response);
+            }
+            catch (Exception ex)
+            {
+                _response = new Response<bool>() { State = false, Mesagge = ex.Message, Vaule = false };
+                return StatusCode(StatusCodes.Status500InternalServerError, _response);
+            }
+        }
+
+        [HttpDelete]
+        [Route("Eliminar/{id:int}")]
+        public async Task<IActionResult> Eliminar(int id)
+        {
+            Response<bool> _response = new();
+            try
+            {
+                bool respuesta = await _usuarioService.Eliminar(id);
+
+                if (respuesta)
+                    _response = new Response<bool>() { State = true, Mesagge = "ok", Vaule = true };
+                else
+                    _response = new Response<bool>() { State = false, Mesagge = "No se pudo eliminar el usuario", Vaule = false };
+
+                return StatusCode(StatusCodes.Status200OK, _response);
+            }
+            catch (Exception ex)
+            {
+                _response = new Response<bool>() { State = false, Mesagge = ex.Message, Vaule = false };
+                return StatusCode(StatusCodes.Status500InternalServerError, _response);
+            }
+        }
     }
 }
+

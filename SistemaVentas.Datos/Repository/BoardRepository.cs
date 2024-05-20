@@ -1,11 +1,6 @@
 ﻿using SistemaVentas.Datos.Repository.Contratos;
 using SistemaVentas.Modelo;
-using System;
-using System.Collections.Generic;
 using System.Globalization;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SistemaVentas.Datos.Repository
 {
@@ -66,9 +61,8 @@ namespace SistemaVentas.Datos.Repository
             {
                 throw;
             }
-
-
         }
+
         public async Task<int> TotalProductos()
         {
             try
@@ -102,15 +96,12 @@ namespace SistemaVentas.Datos.Repository
                         .ToDictionary(keySelector: r => r.fecha, elementSelector: r => r.total);
                 }
 
-
                 return resultado;
-
             }
             catch
             {
                 throw;
             }
-
         }
     }
 }

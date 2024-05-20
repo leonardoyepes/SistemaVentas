@@ -78,6 +78,7 @@ namespace SistemaVentas.Negocio.Servicios
             try
             {
                 var listaUsuario = await _genericRepository.Consultar();
+                _ = listaUsuario.Include(usu => usu.IdRolNavigation);
                 return _mapper.Map<List<UsuarioDTO>>(listaUsuario);
             }
             catch (Exception ex)
